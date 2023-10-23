@@ -7,12 +7,9 @@ interface AuthenticateUseCaseRequest {
   email: string
   password: string
 }
-
 interface AuthenticateUseCaseResponse {
   user: User
 }
-
-
 export class AuthenticateUseCase {
   constructor(private usersRepository: UserRepository) {}
 
