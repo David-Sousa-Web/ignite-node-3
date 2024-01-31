@@ -40,10 +40,10 @@ describe("Check-in Use Case", () => {
     ).rejects.toBeInstanceOf(ResourceNotFoundError);
   });
 
-  it("should not be able to validate the check-in after 20 minutes of its created", async () => {
+  it("should not be able to validate the check-in after 20 minutes of its creation", async () => {
     vi.setSystemTime(new Date(2023, 0, 1, 13, 40));
 
-    const createdcheckIn = await checkInRepository.create({
+    const createdCheckIn = await checkInRepository.create({
       gym_Id: "gym-01",
       user_Id: "user-01",
     });
@@ -52,10 +52,10 @@ describe("Check-in Use Case", () => {
 
     vi.advanceTimersByTime(twentyOneMinutesInMs);
 
-    await expect(() => {
+    await expect(() =>
       sut.execute({
-        checkInId: createdcheckIn.id,
-      });
-    }).rejects.toBeInstanceOf(Error);
+        checkInId: createdCheckIn.id,
+      })
+    ).rejects.toBeInstanceOf(Error);
   });
 });
