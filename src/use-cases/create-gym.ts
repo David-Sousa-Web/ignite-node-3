@@ -1,19 +1,16 @@
-import { UserRepository } from "@/repositories/users-repository";
-import { hash } from "bcryptjs";
-import { UserAlreadyExistError } from "./errors/user-already-exists";
-import { Gym, User } from "@prisma/client";
-import { GymsRepository } from "@/repositories/gyms-repository";
+import { GymsRepository } from '@/repositories/gyms-repository'
+import { Gym } from '@prisma/client'
 
 interface CreateGymUseCaseRequest {
-  title: string;
-  description?: string | null;
-  phone: string | null;
-  latitude: number;
-  longitude: number;
+  title: string
+  description: string | null
+  phone: string | null
+  latitude: number
+  longitude: number
 }
 
 interface CreateGymUseCaseResponse {
-  gym: Gym;
+  gym: Gym
 }
 
 export class CreateGymUseCase {
@@ -32,10 +29,10 @@ export class CreateGymUseCase {
       phone,
       latitude,
       longitude,
-    });
+    })
 
     return {
       gym,
-    };
+    }
   }
 }

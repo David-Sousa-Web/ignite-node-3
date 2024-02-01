@@ -1,25 +1,25 @@
-import { expect, describe, it, beforeEach } from "vitest";
-import { InMemoryGymsRepository } from "@/repositories/in-memory/in-memory-gyms-repository";
-import { CreateGymUseCase } from "./create-gym";
+import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms-repository'
+import { expect, describe, it, beforeEach } from 'vitest'
+import { CreateGymUseCase } from './create-gym'
 
-let gymsRepository: InMemoryGymsRepository;
-let sut: CreateGymUseCase;
+let gymsRepository: InMemoryGymsRepository
+let sut: CreateGymUseCase
 
-describe("Register Use Case", () => {
+describe('Create Gym Use Case', () => {
   beforeEach(() => {
-    gymsRepository = new InMemoryGymsRepository();
-    sut = new CreateGymUseCase(gymsRepository);
-  });
+    gymsRepository = new InMemoryGymsRepository()
+    sut = new CreateGymUseCase(gymsRepository)
+  })
 
-  it("Should be able to register", async () => {
+  it('should to create gym', async () => {
     const { gym } = await sut.execute({
-      title: "javaScript gym",
+      title: 'JavaScript Gym',
       description: null,
       phone: null,
       latitude: -27.2092052,
       longitude: -49.6401091,
-    });
+    })
 
-    expect(gym.id).toEqual(expect.any(String));
-  });
-});
+    expect(gym.id).toEqual(expect.any(String))
+  })
+})
